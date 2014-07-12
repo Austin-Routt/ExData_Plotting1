@@ -33,7 +33,11 @@ plot3 <- function(){
     ##Create "plot3.png" in the user's working directory
     print("Creating plot3.png in User's working directory.")
     
-    png("plot3.png", width = 480, height = 480)
+    png("plot3.png", width = 480, height = 480, bg="transparent" )
+    
+    par(bg="transparent")    
+        
+    
     plot( householdPowerConsumption$Sub_metering_1 ~ householdPowerConsumption$Date,type = "l", col = "black",							 ylab = "Energy sub metering", xlab = "")
     lines(householdPowerConsumption$Sub_metering_2 ~ householdPowerConsumption$Date, type = "l", col = "red")
     lines(householdPowerConsumption$Sub_metering_3 ~ householdPowerConsumption$Date, type = "l", col = "blue")

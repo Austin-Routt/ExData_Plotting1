@@ -19,11 +19,11 @@ plot1 <- function(){
     householdPowerConsumption <- read.table("household_power_consumption.txt", header = TRUE, sep = ";", stringsAsFactors = FALSE)
     
     ## Take only the subset of Dates that correspond to "1/2/2007"  or "2/2/2007"
-    print("Taking the subset of 1/2/2007 and 2/2/2007 dates; day/month/year")
+    print("Taking the subset of 1/2/2007 or 2/2/2007 dates; day/month/year")
     householdPowerConsumption <- subset(householdPowerConsumption, Date == "1/2/2007" | Date == "2/2/2007")
     
     ## Merge Date and Time and store in the Date column, converting to POSIXct
-    print("Merging Date and Time and storing the result in the Date column, converting to POSIXct")
+    print("Merging Date and Time and store in the Date column, converting to POSIXct")
     householdPowerConsumption$Date <- as.POSIXct(paste(householdPowerConsumption$Date, householdPowerConsumption$Time), format="%d/%m/%Y %H:%M:%S")
     
     ## Convert other columns, aside from Date and Time, into numeric type; suppress na warnings
@@ -34,8 +34,12 @@ plot1 <- function(){
     ##Create "plot1.png" in the user's working directory
     print("Creating plot1.png in User's working directory.")
     
-    png("plot1.png", width = 480, height = 480)
-    hist(householdPowerConsumption$Global_active_power, xlab="Global Active Power (kilowatts)", main="Global Active Power", col="red")
+        
+    png("plot1.png", width = 480, height = 480, bg="transparent" )
+    
+    par(bg="transparent")
+
+    hist(householdPowerConsumption$Global_active_power, xlab="Global Active Power (kilowatts)", main="Global Active Power", 		col="red")
     dev.off()
     
     print("Done.")

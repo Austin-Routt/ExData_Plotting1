@@ -33,7 +33,10 @@ plot4 <- function(){
     ##Create "plot4.png" in the user's working directory
     print("Creating plot4.png in User's working directory.")
     
-    png("plot4.png", width = 480, height = 480)
+    png("plot4.png", width = 480, height = 480, bg="transparent" )
+    
+    par(bg="transparent") 
+    
     par(mfrow = c(2,2))
     
     plot( householdPowerConsumption$Global_active_power ~ householdPowerConsumption$Date,type = "l", 									ylab = "Global Active Power", xlab = "")
